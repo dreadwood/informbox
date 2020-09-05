@@ -1,28 +1,21 @@
 const autoprefixer = require('autoprefixer');
-const csso = require('gulp-csso');
 const del = require('del');
 const gulp = require('gulp');
 const htmlmin = require('gulp-htmlmin');
-const imagemin = require('gulp-imagemin');
-const include = require('posthtml-include');
 const plumber = require('gulp-plumber');
 const postcss = require('gulp-postcss');
-const posthtml = require('gulp-posthtml');
 const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const sync = require('browser-sync').create();
 const sourcemap = require('gulp-sourcemaps');
 const svgstore = require('gulp-svgstore')
-const gulpWebp = require('gulp-webp');
 
 const css = () => {
   return gulp.src('src/sass/style.scss')
   .pipe(plumber())
   .pipe(sourcemap.init())
   .pipe(sass())
-  // .pipe(postcss([ autoprefixer() ]))
-  // .pipe(csso())
-  // .pipe(rename('style.min.css'))
+  .pipe(postcss([ autoprefixer() ]))
   .pipe(sourcemap.write('.'))
   .pipe(gulp.dest('dist/css'))
   .pipe(sync.stream());
@@ -48,22 +41,6 @@ const refresh = (done) => {
   done();
 }
 
-const images = () => {
-  return gulp.src('dist/img/**/*.{png,jpg,svg}')
-  .pipe(imagemin([
-    imagemin.optipng({optimizationLevel: 3}),
-    imagemin.jpegtran({progressive: true}),
-    imagemin.svgo()
-  ]))
-  .pipe(gulp.dest('dist/img'));
-}
-
-const webp = () => {
-  return gulp.src('src/img/**/*.{png,jpg}')
-  .pipe(gulpWebp({quality: 90}))
-  .pipe(gulp.dest('src/img'));
-}
-
 const sprite = () => {
   return gulp.src('src/img/icon-*.svg')
   .pipe(svgstore({inlineSvg: true}))
@@ -73,9 +50,6 @@ const sprite = () => {
 
 const html = () => {
   return gulp.src('src/*.html')
-  .pipe(posthtml([
-    include()
-  ]))
   .pipe(htmlmin({
     removeComments: true,
     collapseWhitespace: true,
@@ -121,8 +95,6 @@ const start = gulp.series(
   server,
 );
 
-exports.webp = webp;
-exports.images = images;
 exports.sprite = sprite;
 exports.build = build;
 exports.start = start;
