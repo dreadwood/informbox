@@ -1,7 +1,7 @@
 {
-  "name": "НАЗВАНИЕ",
+  "name": "informbox",
   "private": "true",
-  "description": "ОПИСАНИЕ",
+  "description": "Тестовое задание для Информбокс",
   "devDependencies": {
     "@htmlacademy/editorconfig-cli": "1.0.0",
     "autoprefixer": "9.5.1",
