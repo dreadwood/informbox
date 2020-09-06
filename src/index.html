@@ -12,7 +12,7 @@
     <section class="palette">
       <div class="palette__header">
         <h1 class="palette__title">Pantone colors</h1>
-        <button class="palette__btn-reset palette__btn-reset--disabled">
+        <button class="palette__btn-reset palette__btn-reset--disabled" disabled>
           <svg width="18" height="18">
             <use href ="img/sprite.svg#icon-reset"></use>
           </svg>
@@ -23,80 +23,35 @@
       <table class="palette__table">
         <tr>
           <th class="palette__col-id">
-            <input id="color-id" type="checkbox" name="color-id" checked>
+            <input id="color-id" type="checkbox" name="id" checked>
             <label for="color-id">Id</label>
           </th>
           <th class="palette__col-name">
-            <input id="color-id" type="checkbox" name="color-id" checked>
-            <label for="color-id">Name</label>
+            <input id="color-name" type="checkbox" name="name" checked>
+            <label for="color-name">Name</label>
           </th>
           <th class="palette__col-year">
-            <input id="color-id" type="checkbox" name="color-id" checked>
-            <label for="color-id">Year</label>
+            <input id="color-year" type="checkbox" name="year" checked>
+            <label for="color-year">Year</label>
           </th>
           <th class="palette__col-color">
-            <input id="color-id" type="checkbox" name="color-id" checked>
-            <label for="color-id">Color</label>
+            <input id="color-color" type="checkbox" name="color" checked>
+            <label for="color-color">Color</label>
           </th>
           <th class="palette__col-value">
-            <input id="color-id" type="checkbox" name="color-id" checked>
-            <label for="color-id">Pantone value</label>
+            <input id="color-value" type="checkbox" name="value" checked>
+            <label for="color-value">Pantone value</label>
           </th>
         </tr>
-        <tr>
-          <td class="palette__col-id">1</td>
-          <td class="palette__col-name">cerulean</td>
-          <td class="palette__col-year">2000</td>
-          <td class="palette__col-color">
-            <span
-              class="palette__item-icon"
-              style="background-color: #98b2d1;"
-            ></span>
-            #98b2d1
-          </td>
-          <td class="palette__col-value">15-4020</td>
-        </tr>
-        <tr>
-          <td class="palette__col-id">2</td>
-          <td class="palette__col-name">fuchsia rose</td>
-          <td class="palette__col-year">2001</td>
-          <td class="palette__col-color">
-            <span
-              class="palette__item-icon"
-              style="background-color: #c74375;"
-            ></span>
-            #c74375
-          </td>
-          <td class="palette__col-value">17-2031</td>
-        </tr>
-        <tr>
-          <td class="palette__col-id">3</td>
-          <td class="palette__col-name">true red</td>
-          <td class="palette__col-year">2002</td>
-          <td class="palette__col-color">
-            <span
-              class="palette__item-icon"
-              style="background-color: #bf1932;"
-            ></span>
-            #bf1932
-          </td>
-          <td class="palette__col-value">19-1664</td>
-        </tr>
-        <tr>
-          <td class="palette__col-id">4</td>
-          <td class="palette__col-name">aqua sky</td>
-          <td class="palette__col-year">2003</td>
-          <td class="palette__col-color">
-            <span
-              class="palette__item-icon"
-              style="background-color: #7bc4c4;"
-            ></span>
-            #7bc4c4
-          </td>
-          <td class="palette__col-value">14-4811</td>
-        </tr>
       </table>
+      <div class="palette__message">
+        <p>Loading...</p>
+      </div>
     </section>
   </main>
+  <script src="js/load.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>
