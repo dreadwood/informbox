@@ -19,6 +19,7 @@
     "gulp-sass": "4.1.0",
     "gulp-sourcemaps": "2.6.5",
     "gulp-svgstore": "7.0.1",
+    "push-dir": "0.4.1",
     "stylelint": "10.1.0",
     "stylelint-config-htmlacademy": "0.1.4"
   },
@@ -29,7 +30,8 @@
     "test": "npm run editorconfig && npm run stylelint && npm run eslint",
     "build": "gulp build",
     "start": "gulp start",
-    "sprite": "gulp sprite"
+    "sprite": "gulp sprite",
+    "gh-pages": "push-dir --dir=dist --branch=gh-pages"
   },
   "browserslist": [
     "last 2 versions"
