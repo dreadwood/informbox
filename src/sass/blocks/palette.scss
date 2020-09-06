@@ -32,9 +32,23 @@
   svg {
     fill: $color-btn;
     margin-right: 4px;
+    @extend %transition;
   }
 
-  &--disabled {
+  &:hover,
+  &:focus {
+    color: $color-text;
+
+    svg {
+      fill: $color-text;
+    }
+  }
+
+  &:hover:not([disabled]) svg {
+    transform: rotate(-360deg);
+  }
+
+  &[disabled] {
     color: $color-disabled;
 
     cursor: auto;
@@ -89,6 +103,14 @@
   td:first-letter {
     text-transform: uppercase;
   }
+
+  &--id-hidden .palette__col-id,
+  &--name-hidden .palette__col-name,
+  &--year-hidden .palette__col-year,
+  &--color-hidden .palette__col-color,
+  &--value-hidden .palette__col-value {
+    display: none;
+  }
 }
 
 .palette__col-id {
@@ -121,4 +143,23 @@
     vertical-align: top;
     border-radius: 2px;
     background-color: #45b5aa;
+}
+
+.palette__message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 150px;
+
+  p {
+    margin: 0;
+    font-size: 15px;
+    color: $color-disabled;
+    text-transform: uppercase;
+  }
+
+  &--hidden {
+    display: none;
+  }
 }
