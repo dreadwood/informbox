@@ -8,7 +8,9 @@ const rename = require('gulp-rename');
 const sass = require('gulp-sass');
 const sync = require('browser-sync').create();
 const sourcemap = require('gulp-sourcemaps');
-const svgstore = require('gulp-svgstore')
+const svgstore = require('gulp-svgstore');
+const concat = require('gulp-concat');
+const order = require('gulp-order');
 
 const css = () => {
   return gulp.src('src/sass/style.scss')
@@ -69,12 +71,15 @@ const copy = () => {
 }
 
 const js = () => {
-  return gulp.src([
-    'src/js/**/*'
-  ], {
-    base: 'src'
-  })
-  .pipe(gulp.dest('dist'));
+  return gulp.src('src/js/**/*')
+  .pipe(order([
+    'load.js',
+    'render.js',
+    'state.js',
+    'index.js',
+  ]))
+  .pipe(concat("script.js"))
+  .pipe(gulp.dest('dist/js'));
 }
 
 const clean = () => {
